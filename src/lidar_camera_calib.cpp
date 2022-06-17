@@ -183,7 +183,7 @@ void roughCalib(Calibration &calibra, Vector6d &calib_params,
           sensor_msgs::ImagePtr img_msg_proj =
               cv_bridge::CvImage(std_msgs::Header(), "bgr8", projection_img)
                   .toImageMsg();
-          opt_img_pub.publish(img_msg_proj);          
+          calibra.opt_img_pub.publish(img_msg_proj);          
           // cv::imshow("Rough Optimization", projection_img);
           // cv::waitKey(50);
         }
