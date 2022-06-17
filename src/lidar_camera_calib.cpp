@@ -290,6 +290,10 @@ int main(int argc, char **argv) {
                          pnp_list);
       }
       cv::Mat projection_img = calibra.getProjectionImg(calib_params);
+      sensor_msgs::ImagePtr img_msg_proj =
+          cv_bridge::CvImage(std_msgs::Header(), "bgr8", projection_img)
+              .toImageMsg();
+      calibra.opt_img_pub.publish(img_msg_proj)      
       // cv::imshow("Optimization", projection_img);
       // cv::waitKey(100);
       Eigen::Vector3d euler_angle(calib_params[0], calib_params[1],
