@@ -52,6 +52,3 @@ EXPOSE 80
 # setup ros environment
 RUN echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
 RUN echo "source $ROS_WS/devel/setup.bash" >> ~/.bashrc
-
-# setup datasets folder
-RUN mkdir -p $HOME/datasets/calib

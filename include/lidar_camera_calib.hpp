@@ -34,22 +34,22 @@
 #define calib
 #define online
 
-class Bag2File {
-public:
-  ros::NodeHandle nh_;
+// class Bag2File {
+// public:
+//   ros::NodeHandle nh_;
 
-  ros::Subscriber cloud_sub = nh_.subscribe ("lidar", 1, &Calibration::cloudCallback, this);
-  ros::Subscriber image_sub = nh_.subscribe ("image", 1, &Calibration::imageCallback, this); 
+//   ros::Subscriber cloud_sub = nh_.subscribe ("lidar", 1, &Calibration::cloudCallback, this);
+//   ros::Subscriber image_sub = nh_.subscribe ("image", 1, &Calibration::imageCallback, this); 
 
-  void cloudCallback(const sensor_msgs::PointCloud2ConstPtr& cloud_msg);
-  void imageCallback(const sensor_msgs::Image& image);   
+//   void cloudCallback(const sensor_msgs::PointCloud2ConstPtr& cloud_msg);
+//   void imageCallback(const sensor_msgs::Image& image);   
 
-  std::string image_file;
-  std::string pcd_file;
+//   std::string image_file;
+//   std::string pcd_file;
 
-  pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_map (new pcl::PointCloud<pcl::PointXYZ>);
+//   pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_map (new pcl::PointCloud<pcl::PointXYZ>);
 
-}
+// }
 
 class Calibration {
 public:

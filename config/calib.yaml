@@ -1,8 +1,8 @@
 # Data path. adjust them!
 common:
-    image_file: "/datasets/calib/image/0.png"
-    pcd_file: "/datasets/calib/pcd/0.pcd"
-    result_file: "/datasets/calib/extrinsic.txt"
+    image_file: "/catkin_ws/src/livox_camera_calib/datasets/image/0.png"
+    pcd_file: "/catkin_ws/src/livox_camera_calib/datasets/pcd/0.pcd"
+    result_file: "/catkin_ws/src/livox_camera_calib/datasets/extrinsic.txt"
 
 # Camera Parameters. Adjust them!
 camera:
