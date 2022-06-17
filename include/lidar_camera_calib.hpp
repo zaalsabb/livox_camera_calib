@@ -64,7 +64,8 @@ public:
       nh_.advertise<sensor_msgs::PointCloud2>("line_cloud", 1);
   ros::Publisher image_pub_ =
       nh_.advertise<sensor_msgs::Image>("camera_image", 1);
-
+  ros::Publisher opt_img_pub =
+      nh_.advertise<sensor_msgs::Image>("optimization_image", 1);
 
   enum ProjectionType { DEPTH, INTENSITY, BOTH };
   enum Direction { UP, DOWN, LEFT, RIGHT };
