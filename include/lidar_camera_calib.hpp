@@ -33,6 +33,24 @@
 
 #define calib
 #define online
+
+class Bag2File {
+public:
+  ros::NodeHandle nh_;
+
+  ros::Subscriber cloud_sub = nh_.subscribe ("lidar", 1, &Calibration::cloudCallback, this);
+  ros::Subscriber image_sub = nh_.subscribe ("image", 1, &Calibration::imageCallback, this); 
+
+  void cloudCallback(const sensor_msgs::PointCloud2ConstPtr& cloud_msg);
+  void imageCallback(const sensor_msgs::Image& image);   
+
+  std::string image_file;
+  std::string pcd_file;
+
+  pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_map (new pcl::PointCloud<pcl::PointXYZ>);
+
+}
+
 class Calibration {
 public:
   ros::NodeHandle nh_;
@@ -46,6 +64,8 @@ public:
       nh_.advertise<sensor_msgs::PointCloud2>("line_cloud", 1);
   ros::Publisher image_pub_ =
       nh_.advertise<sensor_msgs::Image>("camera_image", 1);
+
+
   enum ProjectionType { DEPTH, INTENSITY, BOTH };
   enum Direction { UP, DOWN, LEFT, RIGHT };
   std::string lidar_topic_name_ = "";
@@ -60,6 +80,8 @@ public:
   int line_number_ = 0;
   int color_intensity_threshold_ = 5;
   Eigen::Vector3d adjust_euler_angle_;
+
+
   Calibration(const std::string &image_file, const std::string &pcd_file,
               const std::string &calib_config_file);
   void loadImgAndPointcloud(const std::string bag_path,
