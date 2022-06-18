@@ -387,6 +387,10 @@ int main(int argc, char **argv) {
   }
   outfile << 0 << "," << 0 << "," << 0 << "," << 1 << std::endl;
   cv::Mat opt_img = calibra.getProjectionImg(calib_params);
+  sensor_msgs::ImagePtr img_msg_proj =
+      cv_bridge::CvImage(std_msgs::Header(), "bgr8", opt_img)
+          .toImageMsg();
+  calibra.opt_img_pub.publish(img_msg_proj);  
   // cv::imshow("Optimization result", opt_img);
   // cv::imwrite("/home/ycj/data/calib/opt.png", opt_img);
   // cv::waitKey(1000);
