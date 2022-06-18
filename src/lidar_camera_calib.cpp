@@ -180,10 +180,10 @@ void roughCalib(Calibration &calibra, Vector6d &calib_params,
                             calibra.rgb_egde_cloud_, calibra.plane_line_cloud_,
                             pnp_list);
           cv::Mat projection_img = calibra.getProjectionImg(calib_params);
-          // sensor_msgs::ImagePtr img_msg_proj =
-          //     cv_bridge::CvImage(std_msgs::Header(), "bgr8", projection_img)
-          //         .toImageMsg();
-          // calibra.opt_img_pub.publish(img_msg_proj);          
+          sensor_msgs::ImagePtr img_msg_proj =
+              cv_bridge::CvImage(std_msgs::Header(), "bgr8", projection_img)
+                  .toImageMsg();
+          calibra.opt_img_pub.publish(img_msg_proj);          
           // cv::imshow("Rough Optimization", projection_img);
           // cv::waitKey(50);
         }
